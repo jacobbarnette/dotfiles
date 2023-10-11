@@ -1,0 +1,66 @@
+set number
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set textwidth=100
+set expandtab
+set fileformat=unix
+set backspace=indent,eol,start
+set encoding=utf-8
+set ignorecase
+set smartcase
+set showmatch
+set number
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'VundleVim/Vundle.vim' " required
+Plugin 'https://github.com/vim-airline/vim-airline'
+Plugin 'chriskempson/base16-vim'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'https://github.com/ap/vim-css-color'
+Plugin 'https://github.com/rafi/awesome-vim-colorschemes'
+Plugin 'stsewd/isort.nvim', { 'do': ':UpdateRemotePlugins' }
+Plugin 'EdenEast/nightfox.nvim'
+Plugin 'mattn/emmet-vim'
+Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plugin 'junegunn/fzf.vim'
+Plugin 'prettier/vim-prettier', {
+  \ 'do': 'yarn install --frozen-lockfile --production',
+  \ 'for': ['javascript', 'typescript', 'css', 'scss', 'json', 'vue', 'html'] }
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+nnoremap <C-p> :Files<CR>
+"Disable text width for html files"
+autocmd FileType html setlocal textwidth=0
+
+" let g:fzf_layout = {'down': '-40%'}
+ let g:fzf_action = {
+ \ 'enter': 'vsplit',
+   \ 'ctrl-t': 'tab split',
+  \ 'ctrl-x': 'split' }
+let g:user_emmet_leader_key=','
+let g:airline_theme='ubaryd'
+let g:isort_command = 'Isort'
+let g:user_emmet_install_global = 0
+autocmd FileType html,css EmmetInstall
+
+"""""""""""""""""""""""""""""""""""""""""""""""""
+" Colors and Fonts
+" """""""""""""""""""""""""""""""""""""""""""""""""
+" " Enable syntax highlighting
+ syntax on
+"
+"
+
+ let base16colorspace=256
+ colorscheme default 
+ set background=dark
+
+
+"
+"
+set cursorline    " highlight current active line
+"
+" """""""""""""""""""""""""""""""""""""""""""""""""
