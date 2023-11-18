@@ -17,7 +17,7 @@ flake_changes() {
 
 
 export EDITOR='vim'
-export AZURE_ACCESS_TOKEN=qkvg4yxzeegahpdidvfowtxy2kmzvqvdjs33gg2tn347dshyufsa
+
 
 alias pip='pip3'
 export ORACLE_HOME LD_LIBRARY_PATH PATH
