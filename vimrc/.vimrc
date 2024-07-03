@@ -2,7 +2,7 @@ set number
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
-set textwidth=100
+set textwidth=81
 set expandtab
 
 set fileformat=unix
@@ -27,7 +27,7 @@ Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plugin 'junegunn/fzf.vim'
 Plugin 'prettier/vim-prettier', {
   \ 'do': 'yarn install --frozen-lockfile --production',
-  \ 'for': ['javascript', 'typescript', 'css', 'scss', 'json', 'vue', 'html'] }
+  \ 'for': ['javascript', 'typescript', 'css', 'scss', 'json', 'vue', 'html'] },
 
 call vundle#end()            " required
 
@@ -45,16 +45,23 @@ nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
 "Disable text width for html files"
 autocmd FileType html setlocal textwidth=0
-
-" let g:fzf_layout = {'down': '-40%'}
  let g:fzf_action = {
  \ 'enter': 'vsplit',
    \ 'ctrl-t': 'tab split',
   \ 'ctrl-x': 'split' }
 let g:user_emmet_leader_key=','
 let g:airline_theme='base16_oceanicnext'
-let g:isort_command = 'Isort'
+let g:isort_command = 'isort'
 let g:user_emmet_install_global = 0
+let g:ale_linters = {'python': ['flake8', 'isort']}
+let g:ale_fixers = {
+    \ 'python': ['autopep8', 'isort'],
+    \}
+let g:ale_lint_on_enter = 0
+let g:ale_fix_on_save = 1
+let g:ale_lint_on_save = 1
+let g:airline#extensions#ale#enabled = 1
+autocmd FileType python setl makeprg=ale#Make
 autocmd FileType html,css EmmetInstall
 
 """""""""""""""""""""""""""""""""""""""""""""""""
@@ -64,12 +71,9 @@ autocmd FileType html,css EmmetInstall
 syntax on
 "
 "
-
  let base16colorspace=256
  colorscheme default
  set background=dark
-
-
 "
 "
 set cursorline    " highlight current active line
